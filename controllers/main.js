@@ -1,8 +1,15 @@
+const CustomAPIError = require('../errors/custom-error');
+const jwt = require('jsonwebtoken');
 
 const login = async (req, res) => {
     const {username, password} = req.body;
-    console.log(username, password)
-    res.send('Fake login/register');
+    if (!username || !password){
+        throw new CustomAPIError('Please provide User Name and Password',400);
+    }
+    const id = new Date().getDate();
+    const token = jwt.sign({id, username},process.env.secret,{expiresIn:'1d'});
+    console.log(username, password); 
+    res.status(200).json({msg:'user created', token});
 }
 
 const dashboard = async (req, res) => {
