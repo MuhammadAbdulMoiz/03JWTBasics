@@ -1,10 +1,10 @@
-const jwt = require('jsonwebtoken');
-const CustomAPIError = require('../errors/custom-error')
+const jwt = require('jsonwebtoken')
+const { unauthorized } = require('../errors/index')
 
 const authenticate = async (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer')){
-        throw new CustomAPIError('No Token Present', 401);
+        throw new unauthorized('No Token Present');
     }
     const tkn = authHeader.split(' ')[1]
     const key = process.env.secret;
@@ -15,7 +15,7 @@ const authenticate = async (req, res, next) => {
         next();
     }
     catch{
-        throw new CustomAPIError('Not authorized to access this route', 401);
+        throw new unauthorized('Not authorized to access this route');
     }
 }
 
