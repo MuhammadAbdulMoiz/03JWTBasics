@@ -6,21 +6,24 @@ const app = express();
 
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-const connectDB = require('./db/connect');
+const mainRouter = require('./routes/main');
+//const connectDB = require('./db/connect');
 
 // middleware
 app.use(express.static('./public'));
 app.use(express.json());
 
+app.use('/api/v1', mainRouter);
+
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
-const uri = process.env.MongoURI
+//const uri = process.env.MongoURI
 
 const start = async () => {
   try {
-    await connectDB(uri)
+    // await connectDB(uri)
     app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
     );
