@@ -19,7 +19,7 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
-//const uri = process.env.MongoURI
+//const uri = process.env.MONGO_URI
 
 const start = async () => {
   try {

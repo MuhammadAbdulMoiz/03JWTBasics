@@ -37,9 +37,8 @@ This project demonstrates best practices for implementing JWT authentication in 
 3. **Create a `.env` file** in the root directory:
    ```env
    PORT=3000
-   JWT_SECRET=your_secret_key_here
-   JWT_LIFETIME=7d
-   MongoURI=mongodb://localhost:27017/jwt-basics
+   SECRET=your_secret_key_here
+   JWT_LIFE=15m
    ```
 
 ## Configuration
@@ -47,9 +46,8 @@ This project demonstrates best practices for implementing JWT authentication in 
 ### Environment Variables
 
 - **PORT**: Server port (default: 3000)
-- **JWT_SECRET**: Secret key for signing JWT tokens
-- **JWT_LIFETIME**: Token expiration time (e.g., '7d', '24h')
-- **MongoURI**: MongoDB connection string (optional)
+- **SECRET**: Secret key for signing JWT tokens
+- **JWT_LIFE**: Token expiration time (e.g., '7d', '24h')
 
 ## Usage
 
@@ -143,7 +141,7 @@ npm start
 ### Available Scripts
 - `npm start` - Start development server with nodemon
 
-## 📚 Learning Resources
+## Learning Resources
 
 This project demonstrates:
 - JWT token creation and verification

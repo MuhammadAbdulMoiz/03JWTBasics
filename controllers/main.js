@@ -12,9 +12,10 @@ const login = async (req, res) => {
         uname: username,
         role: 'user'
     }
-    const key = process.env.secret;
+    const key = process.env.SECRET;
+    const life = process.env.JWT_LIFE
     const options = {
-        expiresIn: '15m',
+        expiresIn: life,
         issuer: 'api-v1'
     }
     const token = jwt.sign(claims, key, options);

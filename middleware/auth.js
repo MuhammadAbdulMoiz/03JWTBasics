@@ -7,7 +7,7 @@ const authenticate = async (req, res, next) => {
         throw new unauthorized('No Token Present');
     }
     const tkn = authHeader.split(' ')[1]
-    const key = process.env.secret;
+    const key = process.env.SECRET;
     try{
         const decode = jwt.verify(tkn, key);
         const {id, uname, role} = decode;
